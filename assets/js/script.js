@@ -61,3 +61,33 @@ function insertValueInCell(event) {
 
     target.textContent = prompt('Enter a value in a cell: ');
 }
+
+// Task 5
+const inputN = document.getElementById('inputN');
+const inputM = document.getElementById('inputM');
+const tableRandomNumbers = document.getElementById('tableRandomNumbers');
+
+inputN.addEventListener('input', fillTableWithRandomNumbers);
+inputM.addEventListener('input', fillTableWithRandomNumbers);
+
+function fillTableWithRandomNumbers() {
+    tableRandomNumbers.innerHTML = '';
+
+    const maxNumber = 100;
+
+    const n = inputN.value;
+    const m = inputM.value;
+
+    for(let i = 0; i < n; i++) {
+        const newRow = tableRandomNumbers.insertRow()
+
+        for(let j = 0; j < m; j++) {
+            const newCell = newRow.insertCell();
+            newCell.textContent = getRandomInt(maxNumber);
+        }
+    }
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
