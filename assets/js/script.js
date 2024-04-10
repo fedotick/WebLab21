@@ -32,3 +32,22 @@ function changeParagraphColor() {
 
     paragraph.style.color = inputColor.value;
 }
+
+// Task 4
+const btnAdd = document.getElementById('btnAdd');
+
+btnAdd.addEventListener('click', addNewEntry);
+
+function addNewEntry() {
+    const tablePeople = document.getElementById('tablePeople');
+    const inputFirstName = document.getElementById('inputFirstName');
+    const inputSecondName = document.getElementById('inputSecondName');
+
+    const newRow = tablePeople.insertRow()
+
+    const cellFirstName = newRow.insertCell();
+    const cellSecondName = newRow.insertCell();
+
+    cellFirstName.textContent = inputFirstName.value;
+    cellSecondName.textContent = inputSecondName.value;
+}
