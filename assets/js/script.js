@@ -34,12 +34,12 @@ function changeParagraphColor() {
 }
 
 // Task 4
+const tablePeople = document.getElementById('tablePeople');
 const btnAdd = document.getElementById('btnAdd');
 
 btnAdd.addEventListener('click', addNewEntry);
 
 function addNewEntry() {
-    const tablePeople = document.getElementById('tablePeople');
     const inputFirstName = document.getElementById('inputFirstName');
     const inputSecondName = document.getElementById('inputSecondName');
 
@@ -50,4 +50,14 @@ function addNewEntry() {
 
     cellFirstName.textContent = inputFirstName.value;
     cellSecondName.textContent = inputSecondName.value;
+}
+
+tablePeople.addEventListener('click', insertValueInCell);
+
+function insertValueInCell(event) {
+    const target = event.target; 
+
+    if (target.tagName != 'TD') return; 
+
+    target.textContent = prompt('Enter a value in a cell: ');
 }
