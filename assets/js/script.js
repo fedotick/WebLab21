@@ -91,3 +91,71 @@ function fillTableWithRandomNumbers() {
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
+
+// Task 6
+const countriesWithCities = {
+    'Switzerland': ['Crissier', 'Horw', 'Leuk', 'Martigny', 'Morges'],
+    'Canada': ['Fernie', 'Nelson', 'Rossland', 'Trail', 'Vernon'],
+    'Sweden': ['Sweden', 'Falun', 'Hjo', 'Kalmar', 'Kumla'],
+    'Japan': ['Inuyama', 'Chita', 'Aisai', 'Kazuno', 'Oga'],
+    'Germany': ['Berlin', 'Essen', 'Bremen', 'Rostock', 'Solingen']
+};
+
+const selectCountry = document.getElementById('selectCountry');
+const countries = Object.keys(countriesWithCities);
+const options = ['Select country...'];
+options.push(...countries);
+
+fillSelect(selectCountry, options);
+
+function fillSelect(select, options) {
+    select.innerHTML = '';
+
+    options.forEach(option => {
+        const newOption = document.createElement('option');
+        newOption.textContent = option;
+        select.appendChild(newOption);
+    });
+}
+
+selectCountry.addEventListener('change', updateSelectCities);
+
+function updateSelectCities() {
+    let selectCity = document.getElementById('selectCity');
+
+    if (!selectCountry.selectedIndex) {
+        if (selectCity) {
+            const labelCity = document.getElementById('labelCity');
+
+            labelCity.remove();
+            selectCity.remove();
+        }
+
+        return;
+    }
+
+    if (!selectCity) {
+        createSelectCities();
+        selectCity = document.getElementById('selectCity');
+    }
+
+    const selectedCountry = selectCountry.value;
+    const cities = countriesWithCities[selectedCountry];
+    const options = ['Select city...'];
+    options.push(...cities);
+    
+    fillSelect(selectCity, options);
+}
+
+function createSelectCities() {
+    const newLabel = document.createElement('label');
+    newLabel.id = 'labelCity';
+    newLabel.textContent = "City:";
+
+    const newSelect = document.createElement('select');
+    newSelect.id = 'selectCity';
+
+    const divTask6 = document.getElementById('task6');
+    divTask6.append(newLabel);
+    divTask6.append(newSelect);
+}
