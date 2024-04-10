@@ -21,3 +21,14 @@ function swapValues() {
 
     [inputFirst.value, inputSecond.value] = [inputSecond.value, inputFirst.value];
 }
+
+// Task 3
+const inputColor = document.getElementById('inputColor');
+
+inputColor.addEventListener('input', changeParagraphColor);
+
+function changeParagraphColor() {
+    const paragraph = document.getElementById('paragraph');
+
+    paragraph.style.color = inputColor.value;
+}
